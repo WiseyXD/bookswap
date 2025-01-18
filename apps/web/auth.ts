@@ -13,7 +13,6 @@ export interface session extends Session {
     name: string;
   };
 }
-//comment for testing
 
 interface token extends JWT {
   jwt: string;
