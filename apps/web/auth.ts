@@ -1,5 +1,5 @@
 import NextAuth, { Session } from "next-auth";
-import Twitter from "next-auth/providers/twitter";
+import Google from "next-auth/providers/google";
 import { JWT } from "next-auth/jwt";
 import { SignJWT, importJWK } from "jose";
 import { PrismaAdapter } from "@auth/prisma-adapter";
@@ -35,10 +35,10 @@ const generateJWT = async (payload: any) => {
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   adapter: PrismaAdapter(prisma),
-  providers: [Twitter],
+  providers: [Google],
   secret: process.env.AUTH_SECRET,
   session: {
-    strategy: "database",
+    strategy: "jwt",
   },
 
   callbacks: {

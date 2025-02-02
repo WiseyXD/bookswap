@@ -11,10 +11,10 @@ export default async function Home() {
     <form
       action={async () => {
         "use server";
-        await signIn("twitter", { redirectTo: "/dashboard" });
+        await signIn("google");
       }}
     >
-      <button type="submit">Signin with Twitter</button>
+      <button type="submit">Signin with Google</button>
     </form>
   );
 }
