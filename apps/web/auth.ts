@@ -9,6 +9,7 @@ export interface session extends Session {
   user: {
     jwt: string;
     id: string;
+    email: string;
     image: string;
     name: string;
   };
@@ -50,9 +51,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       }
 
       const jwt = await generateJWT({
-        id: customSession.user.id,
-        name: customSession.user.name,
-        image: customSession.user.email,
+        id: token.sub,
+        name: token.name,
+        email: token.email,
+        image: token.picture,
       });
 
       customSession.user.jwt = jwt;
